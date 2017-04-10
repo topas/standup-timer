@@ -6,7 +6,7 @@
 
 #define LEDS_COUNT 30
 #define TURNOFF_LONGPRESS_MILLIS 2000
-#define AUTO_OFF_AFTER_TIMEOUT 30000
+#define IDLE_TIMEOUT_MILLIS 30000
 
 #define BUTTON_PIN 8
 #define DATA_PIN 14
@@ -21,6 +21,7 @@ CRGB leds[LEDS_COUNT];
 SimpleTimer timer;
 int countdownTimerId = -1;
 int countdownValue = COUNTDOWN_SECONDS;
+int idleTimerId = -1;
 
 void countdownTick() {
   countdownValue--;
@@ -32,12 +33,14 @@ void countdownTick() {
 
 void turnOff() {
   state = OFF_STATE;
+  timer.deleteTimer(countdownTimerId);
+  timer.deleteTimer(idleTimerId);
   Serial.println("Turned off");
 }
 
 void startTimeout() {
   state = TIMEOUT_STATE;
-  timer.setTimeout(AUTO_OFF_AFTER_TIMEOUT, turnOff);
+  idleTimerId = timer.setTimeout(IDLE_TIMEOUT_MILLIS, turnOff);
   Serial.println("Timeouted");
 }
 
