@@ -1,6 +1,6 @@
 # Arduino Stand-up Meeting Timer 
 
-All team members may speak only for 60 seconds to avoid long stand-up meeting. This is solution: Simple Arduino countdown timer with RGB LED strip visualisation and one button for start (short press) and turn off (long press). 
+All team members may speak only for 60 seconds to avoid long stand-up meetings. This is the solution: Simple Arduino countdown timer with RGB LED strip visualisation and one button for start (short press) and turn off (long press). 
 
 ### Parts and wiring
  - Pro Micro - small Arduino compatible board https://www.sparkfun.com/products/12640
