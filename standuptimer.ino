@@ -47,6 +47,7 @@ void startTimeout() {
 void startCountdown() {
   state = COUNTDOWN_STATE;
   timer.deleteTimer(countdownTimerId);
+  timer.deleteTimer(idleTimerId);
   countdownTimerId = timer.setInterval(1000, countdownTick);
   countdownValue = COUNTDOWN_SECONDS;
   Serial.println("Countdown started");
